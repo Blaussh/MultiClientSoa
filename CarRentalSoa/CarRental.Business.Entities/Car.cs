@@ -4,11 +4,13 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Common.Core;
+using Core.Common.Contracts;
 
 namespace CarRental.Business.Entities
 {
     [DataContract]
-    public class Car
+    public class Car : EntityBase, IIdentifiableEntity
     {
         [DataMember]
         public int CarId { get; set; }
@@ -27,5 +29,12 @@ namespace CarRental.Business.Entities
 
         [DataMember]
         public bool CurrentlyRented { get; set; }
+
+
+        public int EntityId
+        {
+            get { return CarId; }
+            set { CarId = value; }
+        }
     }
 }

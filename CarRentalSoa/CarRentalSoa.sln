@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Client.Entities",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Entities", "CarRental.Business.Entities\CarRental.Business.Entities.csproj", "{1EA5AC22-3799-403E-B24C-2D2B0FB07115}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common", "Core.Common\Core.Common.csproj", "{06387A69-615F-4047-A161-04E058C1F41A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common.Contracts", "Core.Common.Contracts\Core.Common.Contracts.csproj", "{8259B726-BF63-4C95-A0F3-BF0671E3553B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{1EA5AC22-3799-403E-B24C-2D2B0FB07115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EA5AC22-3799-403E-B24C-2D2B0FB07115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EA5AC22-3799-403E-B24C-2D2B0FB07115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06387A69-615F-4047-A161-04E058C1F41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06387A69-615F-4047-A161-04E058C1F41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06387A69-615F-4047-A161-04E058C1F41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06387A69-615F-4047-A161-04E058C1F41A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8259B726-BF63-4C95-A0F3-BF0671E3553B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8259B726-BF63-4C95-A0F3-BF0671E3553B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8259B726-BF63-4C95-A0F3-BF0671E3553B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8259B726-BF63-4C95-A0F3-BF0671E3553B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +48,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8E1021FB-40ED-4379-BC9A-0CEBB6DF6681} = {A8DD9CBC-763D-4021-8812-D87AACDC3A7C}
 		{1EA5AC22-3799-403E-B24C-2D2B0FB07115} = {2D625A9B-46F3-4298-B609-13D4A80D6C37}
+		{06387A69-615F-4047-A161-04E058C1F41A} = {DE181C4A-1AEA-467F-9A10-A5B24551A3A5}
+		{8259B726-BF63-4C95-A0F3-BF0671E3553B} = {DE181C4A-1AEA-467F-9A10-A5B24551A3A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B7C420A-FF0D-4C81-A622-6150F32D8CF7}
