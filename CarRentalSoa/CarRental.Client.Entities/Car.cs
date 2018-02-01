@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Common.Core;
 
 namespace CarRental.Client.Entities
 {
-    public class Car
+    public class Car : ObjectBase
     {
         private int _carId;
 
         public int CarId
         {
             get { return _carId; }
-            set { _carId = value; }
+            set
+            {
+                if (_carId != value)
+                {
+                    _carId = value;
+                    OnPropertyChanged(() => CarId);
+                }
+            }
         }
 
         private string _description;
@@ -21,7 +29,14 @@ namespace CarRental.Client.Entities
         public string Description
         {
             get { return _description; }
-            set { _description = Description; }
+            set
+            {
+                if (_description != value)
+                {
+                    _description = value;
+                    OnPropertyChanged(() => Description);
+                }
+            }
         }
 
         private string _color;
@@ -34,7 +49,11 @@ namespace CarRental.Client.Entities
             }
             set
             {
-                _color = Color;
+                if (_color != value)
+                {
+                    _color = value;
+                    OnPropertyChanged(() => Color);
+                }
             }
         }
 
@@ -43,7 +62,14 @@ namespace CarRental.Client.Entities
         public int Year
         {
             get { return _year; }
-            set { _year = value; }
+            set
+            {
+                if (_year != value)
+                {
+                    _year = value;
+                    OnPropertyChanged(() => Year);
+                }
+            }
         }
 
         private decimal _rentalPrice;
@@ -51,7 +77,14 @@ namespace CarRental.Client.Entities
         public decimal RentalPrice
         {
             get { return _rentalPrice; }
-            set { _rentalPrice = value; }
+            set
+            {
+                if (_rentalPrice != value)
+                {
+                    _rentalPrice = value;
+                    OnPropertyChanged(() => RentalPrice);
+                }
+            }
         }
 
         private bool _currentlyRented;
@@ -59,7 +92,14 @@ namespace CarRental.Client.Entities
         public bool CurrentlyRented
         {
             get { return _currentlyRented; }
-            set { _currentlyRented = value; }
+            set
+            {
+                if (_currentlyRented != value)
+                {
+                    _currentlyRented = value;
+                    OnPropertyChanged(() => CurrentlyRented);
+                }
+            }
         }
     }
 }
