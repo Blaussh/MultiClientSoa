@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A3C4F9FE-485C-40EA-ABEF-56DB24D2F45E}</ProjectGuid>
+    <ProjectGuid>{D60D6488-9AEF-4A0A-AB33-50E15CF740A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarRental.Data</RootNamespace>
-    <AssemblyName>CarRental.Data</AssemblyName>
+    <RootNamespace>CarRental.Business.Bootstrapper</RootNamespace>
+    <AssemblyName>CarRental.Business.Bootstrapper</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,7 +40,6 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,37 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarRentalContext.cs" />
-    <Compile Include="Data Repositories\AccountRepository.cs" />
-    <Compile Include="Data Repositories\CarRepository.cs" />
-    <Compile Include="Data Repositories\RentalRepository.cs" />
-    <Compile Include="Data Repositories\ReservationRepository.cs" />
-    <Compile Include="DataRepositoryBase.cs" />
+    <Compile Include="MEFLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\CarRental.Data\CarRental.Data.csproj">
+      <Project>{A3C4F9FE-485C-40EA-ABEF-56DB24D2F45E}</Project>
+      <Name>CarRental.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarRental.Business.Entities\CarRental.Business.Entities.csproj">
-      <Project>{1EA5AC22-3799-403E-B24C-2D2B0FB07115}</Project>
-      <Name>CarRental.Business.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarRental.Data.Contracts\CarRental.Data.Contracts.csproj">
-      <Project>{F3E89069-D9F8-4E84-85BB-AB4FE38802A0}</Project>
-      <Name>CarRental.Data.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Core.Common.Contracts\Core.Common.Contracts.csproj">
-      <Project>{8259B726-BF63-4C95-A0F3-BF0671E3553B}</Project>
-      <Name>Core.Common.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
-      <Project>{06387a69-615f-4047-a161-04e058c1f41a}</Project>
-      <Name>Core.Common</Name>
-    </ProjectReference>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

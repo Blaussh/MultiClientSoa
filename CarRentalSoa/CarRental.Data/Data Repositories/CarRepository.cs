@@ -5,6 +5,8 @@ using System.Linq;
 using CarRental.Business.Entities;
 using CarRental.Data.Contracts;
 using CarRental.Data.Data_Repositories;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Core.Common.Extensions;
 
 namespace CarRental.Data

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -222,6 +223,8 @@ namespace Core.Common.Core
         {
             get { return string.Empty; }
         }
+
+        public static CompositionContainer Container { get; set; }
 
         string IDataErrorInfo.this[string columnName]
         {
