@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using CarRental.Business.Entities;
 using CarRental.Data.Contracts;
+using CarRental.Data.Contracts.DTOs;
 using CarRental.Data.Data_Repositories;
 using Core.Common.Extensions;
 
@@ -42,23 +43,23 @@ namespace CarRental.Data
             return results;
         }
 
-        //public IEnumerable<CustomerReservationInfo> GetCurrentCustomerReservationInfo()
-        //{
-        //    using (CarRentalContext entityContext = new CarRentalContext())
-        //    {
-        //        var query = from r in entityContext.ReservationSet
-        //                    join a in entityContext.AccountSet on r.AccountId equals a.AccountId
-        //                    join c in entityContext.CarSet on r.CarId equals c.CarId
-        //                    select new CustomerReservationInfo()
-        //                    {
-        //                        Customer = a,
-        //                        Car = c,
-        //                        Reservation = r
-        //                    };
+        public IEnumerable<CustomerReservationInfo> GetCurrentCustomerReservationInfo()
+        {
+            using (CarRentalContext entityContext = new CarRentalContext())
+            {
+                var query = from r in entityContext.ReservationSet
+                            join a in entityContext.AccountSet on r.AccountId equals a.AccountId
+                            join c in entityContext.CarSet on r.CarId equals c.CarId
+                            select new CustomerReservationInfo()
+                            {
+                                Customer = a,
+                                Car = c,
+                                Reservation = r
+                            };
 
-        //        return query.ToFullyLoaded();
-        //    }
-        //}
+                return query.ToFullyLoaded();
+            }
+        }
 
         public IEnumerable<Reservation> GetReservationsByPickupDate(DateTime pickupDate)
         {
@@ -72,23 +73,23 @@ namespace CarRental.Data
             }
         }
 
-        //public IEnumerable<CustomerReservationInfo> GetCustomerOpenReservationInfo(int accountId)
-        //{
-        //    using (CarRentalContext entityContext = new CarRentalContext())
-        //    {
-        //        var query = from r in entityContext.ReservationSet
-        //                    join a in entityContext.AccountSet on r.AccountId equals a.AccountId
-        //                    join c in entityContext.CarSet on r.CarId equals c.CarId
-        //                    where r.AccountId == accountId
-        //                    select new CustomerReservationInfo()
-        //                    {
-        //                        Customer = a,
-        //                        Car = c,
-        //                        Reservation = r
-        //                    };
+        public IEnumerable<CustomerReservationInfo> GetCustomerOpenReservationInfo(int accountId)
+        {
+            using (CarRentalContext entityContext = new CarRentalContext())
+            {
+                var query = from r in entityContext.ReservationSet
+                            join a in entityContext.AccountSet on r.AccountId equals a.AccountId
+                            join c in entityContext.CarSet on r.CarId equals c.CarId
+                            where r.AccountId == accountId
+                            select new CustomerReservationInfo()
+                            {
+                                Customer = a,
+                                Car = c,
+                                Reservation = r
+                            };
 
-        //        return query.ToFullyLoaded();
-        //    }
-        //}
+                return query.ToFullyLoaded();
+            }
+        }
     }
 }
