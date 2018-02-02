@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Data.Tests", "Car
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Bootstrapper", "CarRental.Business.Bootstrapper\CarRental.Business.Bootstrapper.csproj", "{D60D6488-9AEF-4A0A-AB33-50E15CF740A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Contracts", "CarRental.Business.Contracts\CarRental.Business.Contracts.csproj", "{81F33FA3-0E48-4228-82C0-75E897732E53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Managers", "CarRental.Business.Managers\CarRental.Business.Managers.csproj", "{83527644-0BD9-4230-B7FD-09C828E562EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,14 @@ Global
 		{D60D6488-9AEF-4A0A-AB33-50E15CF740A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D60D6488-9AEF-4A0A-AB33-50E15CF740A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D60D6488-9AEF-4A0A-AB33-50E15CF740A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81F33FA3-0E48-4228-82C0-75E897732E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81F33FA3-0E48-4228-82C0-75E897732E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81F33FA3-0E48-4228-82C0-75E897732E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81F33FA3-0E48-4228-82C0-75E897732E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83527644-0BD9-4230-B7FD-09C828E562EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83527644-0BD9-4230-B7FD-09C828E562EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83527644-0BD9-4230-B7FD-09C828E562EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83527644-0BD9-4230-B7FD-09C828E562EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +99,8 @@ Global
 		{F3E89069-D9F8-4E84-85BB-AB4FE38802A0} = {E98251A8-1851-4654-B793-48042ACE7500}
 		{527918A4-908D-4B36-B509-C8BC013E5B73} = {C35D60BA-BD81-4289-BACC-213AF1C84BC1}
 		{D60D6488-9AEF-4A0A-AB33-50E15CF740A1} = {2D625A9B-46F3-4298-B609-13D4A80D6C37}
+		{81F33FA3-0E48-4228-82C0-75E897732E53} = {2D625A9B-46F3-4298-B609-13D4A80D6C37}
+		{83527644-0BD9-4230-B7FD-09C828E562EB} = {2D625A9B-46F3-4298-B609-13D4A80D6C37}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B7C420A-FF0D-4C81-A622-6150F32D8CF7}
