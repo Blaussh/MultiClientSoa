@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CarRental.Business.Entities;
-using CarRental.Data.Contracts.DTOs;
 using Core.Common.Contracts;
 
 namespace CarRental.Data.Contracts

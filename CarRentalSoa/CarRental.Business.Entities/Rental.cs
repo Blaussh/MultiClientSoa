@@ -1,9 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Common.Contracts;
 using Core.Common.Core;
 
@@ -30,15 +28,23 @@ namespace CarRental.Business.Entities
         [DataMember]
         public DateTime? DateReturned { get; set; }
 
+        #region IIdentifiableEntity members
+
         public int EntityId
         {
             get { return RentalId; }
             set { RentalId = value; }
         }
 
-        public int OwnerAccountId
+        #endregion
+
+        #region IAccountOwnedEntity members
+
+        int IAccountOwnedEntity.OwnerAccountId
         {
             get { return AccountId; }
         }
+
+        #endregion
     }
 }

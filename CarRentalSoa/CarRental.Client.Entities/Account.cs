@@ -17,7 +17,7 @@ namespace CarRental.Client.Entities
         string _ZipCode;
         string _CreditCard;
         string _ExpDate;
-
+        
         public int AccountId
         {
             get { return _AccountId; }

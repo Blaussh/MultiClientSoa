@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
@@ -7,7 +7,6 @@ using CarRental.Business.Entities;
 using CarRental.Data.Contracts;
 using Core.Common.Contracts;
 using CarRental.Common;
-using CarRental.Data.Contracts.Repository_Interfaces;
 using Core.Common.Exceptions;
 
 namespace CarRental.Business
@@ -50,11 +49,11 @@ namespace CarRental.Business
             return rented;
         }
 
-        public bool IsCarAvailableForRental(int carId, DateTime pickupDate, DateTime returnDate,
+        public bool IsCarAvailableForRental(int carId, DateTime pickupDate, DateTime returnDate, 
                                             IEnumerable<Rental> rentedCars, IEnumerable<Reservation> reservedCars)
         {
             bool available = true;
-
+            
             Reservation reservation = reservedCars.Where(item => item.CarId == carId).FirstOrDefault();
             if (reservation != null && (
                 (pickupDate >= reservation.RentalDate && pickupDate <= reservation.ReturnDate) ||

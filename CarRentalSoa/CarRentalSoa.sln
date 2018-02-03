@@ -49,6 +49,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Managers.Tests", "CarRental.Business.Managers.Tests\CarRental.Business.Managers.Tests.csproj", "{7BF27983-3B9A-490E-9AC3-DF3AC95821D8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{037C365B-788D-4A05-9513-05A6F3E4029D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.ServiceHost.Console", "CarRental.ServoceHost.Console\CarRental.ServiceHost.Console.csproj", "{F2EA2BE0-6B84-4735-B864-1FFA664919A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +127,10 @@ Global
 		{7BF27983-3B9A-490E-9AC3-DF3AC95821D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BF27983-3B9A-490E-9AC3-DF3AC95821D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BF27983-3B9A-490E-9AC3-DF3AC95821D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2EA2BE0-6B84-4735-B864-1FFA664919A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2EA2BE0-6B84-4735-B864-1FFA664919A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2EA2BE0-6B84-4735-B864-1FFA664919A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2EA2BE0-6B84-4735-B864-1FFA664919A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +153,7 @@ Global
 		{A16C5673-78A6-4683-9EF1-6979E546AFB4} = {DE181C4A-1AEA-467F-9A10-A5B24551A3A5}
 		{1316FEBC-4A64-4721-B43E-888B05A0D1B8} = {C35D60BA-BD81-4289-BACC-213AF1C84BC1}
 		{7BF27983-3B9A-490E-9AC3-DF3AC95821D8} = {C35D60BA-BD81-4289-BACC-213AF1C84BC1}
+		{F2EA2BE0-6B84-4735-B864-1FFA664919A3} = {037C365B-788D-4A05-9513-05A6F3E4029D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B7C420A-FF0D-4C81-A622-6150F32D8CF7}

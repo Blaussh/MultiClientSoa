@@ -10,6 +10,6 @@ namespace CarRental.Common
     {
         public const string CarRentalUser = "CarRentalUser";
 
-        public const string CarRentalAdminRole = "Admin";
+        public const string CarRentalAdminRole = "CarRentalAdmin";
     }
 }

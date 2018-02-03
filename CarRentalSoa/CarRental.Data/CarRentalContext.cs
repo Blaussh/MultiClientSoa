@@ -8,7 +8,6 @@ using System.Runtime.Serialization;
 using CarRental.Business.Entities;
 using Core.Common.Contracts;
 
-
 namespace CarRental.Data
 {
     public class CarRentalContext : DbContext

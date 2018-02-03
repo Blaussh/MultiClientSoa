@@ -29,6 +29,7 @@ namespace Core.Common.Core
 
         protected IEnumerable<ValidationFailure> _ValidationErrors = null;
 
+        public static CompositionContainer Container { get; set; }
 
         #region IExtensibleDataObject Members
 
@@ -223,8 +224,6 @@ namespace Core.Common.Core
         {
             get { return string.Empty; }
         }
-
-        public static CompositionContainer Container { get; set; }
 
         string IDataErrorInfo.this[string columnName]
         {

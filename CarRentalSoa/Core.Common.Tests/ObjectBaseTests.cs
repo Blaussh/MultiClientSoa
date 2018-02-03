@@ -23,7 +23,7 @@ namespace Core.Common.Tests
 
             objTest.CleanProp = "test value";
 
-            Assert.IsTrue(propertyChanged,"The property should have triggered change notification");
+            Assert.IsTrue(propertyChanged, "Changing CleanProp should have set the notiication flag to true.");
         }
 
         [TestMethod]
@@ -31,11 +31,11 @@ namespace Core.Common.Tests
         {
             TestClass objTest = new TestClass();
 
-            Assert.IsFalse(objTest.IsDirty,"Object should be clean");
+            Assert.IsFalse(objTest.IsDirty, "Object should be clean.");
 
             objTest.DirtyProp = "test value";
 
-            Assert.IsTrue(objTest.IsDirty, "Object should be dirty");
+            Assert.IsTrue(objTest.IsDirty, "Object should be dirty.");
         }
 
         [TestMethod]
@@ -47,7 +47,6 @@ namespace Core.Common.Tests
             PropertyChangedEventHandler handler2 = new PropertyChangedEventHandler((s, e) => { changeCounter++; });
 
             objTest.PropertyChanged += handler1;
-            objTest.PropertyChanged += handler1; // should not duplicate
             objTest.PropertyChanged += handler1; // should not duplicate
             objTest.PropertyChanged += handler1; // should not duplicate
             objTest.PropertyChanged += handler2;
@@ -110,6 +109,5 @@ namespace Core.Common.Tests
 
             Assert.IsTrue(objTest.IsValid, "Object should be valid as its property has been fixed.");
         }
-
     }
 }

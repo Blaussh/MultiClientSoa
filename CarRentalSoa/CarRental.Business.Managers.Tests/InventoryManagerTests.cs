@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
 using System.Threading;
 using CarRental.Business.Entities;
@@ -16,42 +18,63 @@ namespace CarRental.Business.Managers.Tests
         public void Initialize()
         {
             GenericPrincipal principal = new GenericPrincipal(
-                new GenericIdentity("Shai"), new string[]{"Admin"});
-
+               new GenericIdentity("Miguel"), new string[] { "Administrators", "CarRentalAdmin" });
             Thread.CurrentPrincipal = principal;
         }
-
         [TestMethod]
-        public void UpdateCar_add_new()
+        public void UpdateCar_AddNew()
         {
             Car newCar = new Car();
             Car addedCar = new Car() { CarId = 1 };
 
             Mock<IDataRepositoryFactory> mockDataRepositoryFactory = new Mock<IDataRepositoryFactory>();
-            mockDataRepositoryFactory.Setup(obj => obj.GetDataRepository<ICarRepository>().Add(newCar)).Returns(addedCar);
+            mockDataRepositoryFactory.Setup(mock => mock.GetDataRepository<ICarRepository>().Add(newCar)).Returns(addedCar);
 
             InventoryManager manager = new InventoryManager(mockDataRepositoryFactory.Object);
 
-            Car results = manager.UpdateCar(newCar);
+            Car updateCarResults = manager.UpdateCar(newCar);
 
-            Assert.IsTrue(results == addedCar);
+            Assert.IsTrue(updateCarResults == addedCar);
         }
 
         [TestMethod]
-        public void UpdateCar_update_existing()
+        public void UpdateCar_UpdateExisting()
         {
             Car existingCar = new Car() { CarId = 1 };
             Car updatedCar = new Car() { CarId = 1 };
 
             Mock<IDataRepositoryFactory> mockDataRepositoryFactory = new Mock<IDataRepositoryFactory>();
-            mockDataRepositoryFactory.Setup(obj => obj.GetDataRepository<ICarRepository>().Update(existingCar)).Returns(updatedCar);
+            mockDataRepositoryFactory.Setup(mock => mock.GetDataRepository<ICarRepository>().Update(existingCar)).Returns(updatedCar);
 
             InventoryManager manager = new InventoryManager(mockDataRepositoryFactory.Object);
 
-            Car results = manager.UpdateCar(existingCar);
+            Car updateCarResults = manager.UpdateCar(existingCar);
 
-            Assert.IsTrue(results == updatedCar);
+            Assert.IsTrue(updateCarResults == updatedCar);
+        }
 
+        [TestMethod]
+        public void DeleteCar()
+        {
+            
+        }
+
+        [TestMethod]
+        public void GetCar()
+        {
+            
+        }
+
+        [TestMethod]
+        public void GetAllCars()
+        {
+            
+        }
+
+        [TestMethod]
+        public void GetAvailableCars()
+        {
+            
         }
     }
 }

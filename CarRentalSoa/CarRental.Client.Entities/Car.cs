@@ -1,8 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Common.Core;
 using FluentValidation;
 
@@ -10,107 +8,107 @@ namespace CarRental.Client.Entities
 {
     public class Car : ObjectBase
     {
-        private int _carId;
+        int _CarId;
+        string _Description;
+        string _Color;
+        int _Year;
+        decimal _RentalPrice;
+        bool _CurrentlyRented;
 
         public int CarId
         {
-            get { return _carId; }
+            get { return _CarId; }
             set
             {
-                if (_carId != value)
+                if (_CarId != value)
                 {
-                    _carId = value;
+                    _CarId = value;
                     OnPropertyChanged(() => CarId);
                 }
             }
         }
 
-        private string _description;
-
         public string Description
         {
-            get { return _description; }
+            get { return _Description; }
             set
             {
-                if (_description != value)
+                if (_Description != value)
                 {
-                    _description = value;
+                    _Description = value;
                     OnPropertyChanged(() => Description);
                 }
             }
         }
 
-        private string _color;
-
         public string Color
         {
-            get
-            {
-                return _color;
-            }
+            get { return _Color; }
             set
             {
-                if (_color != value)
+                if (_Color != value)
                 {
-                    _color = value;
+                    _Color = value;
                     OnPropertyChanged(() => Color);
                 }
             }
         }
 
-        private int _year;
-
         public int Year
         {
-            get { return _year; }
+            get { return _Year; }
             set
             {
-                if (_year != value)
+                if (_Year != value)
                 {
-                    _year = value;
+                    _Year = value;
                     OnPropertyChanged(() => Year);
                 }
             }
         }
 
-        private decimal _rentalPrice;
-
         public decimal RentalPrice
         {
-            get { return _rentalPrice; }
+            get { return _RentalPrice; }
             set
             {
-                if (_rentalPrice != value)
+                if (_RentalPrice != value)
                 {
-                    _rentalPrice = value;
+                    _RentalPrice = value;
                     OnPropertyChanged(() => RentalPrice);
                 }
             }
         }
 
-        private bool _currentlyRented;
-
         public bool CurrentlyRented
         {
-            get { return _currentlyRented; }
+            get { return _CurrentlyRented; }
             set
             {
-                if (_currentlyRented != value)
+                if (_CurrentlyRented != value)
                 {
-                    _currentlyRented = value;
+                    _CurrentlyRented = value;
                     OnPropertyChanged(() => CurrentlyRented);
                 }
             }
         }
 
-        class CarValidator: AbstractValidator<Car>
+        public string LongDescription
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", _Year, _Color, _Description);
+            }
+        }
+
+        class CarValidator : AbstractValidator<Car>
         {
             public CarValidator()
             {
                 RuleFor(obj => obj.Description).NotEmpty();
                 RuleFor(obj => obj.Color).NotEmpty();
                 RuleFor(obj => obj.RentalPrice).GreaterThan(0);
-                RuleFor(obj => obj.Year).GreaterThan(2000).LessThan(DateTime.Now.Year);
+                RuleFor(obj => obj.Year).GreaterThan(2000).LessThanOrEqualTo(DateTime.Now.Year + 1);
             }
         }
 
