@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
+using System.Transactions;
+using CarRental.Business.Bootstrapper;
+using CarRental.Business.Entities;
 using CarRental.Business.Managers;
+using Core.Common.Core;
 using SM = System.ServiceModel;
+using Timer = System.Timers.Timer;
 
 
 namespace CarRental.ServiceHost
@@ -13,6 +21,11 @@ namespace CarRental.ServiceHost
     {
         static void Main(string[] args)
         {
+            GenericPrincipal principal = new GenericPrincipal(
+                new GenericIdentity("Shai"), new string[] { "CarRentalAdmin" });
+            Thread.CurrentPrincipal = principal;
+
+            ObjectBase.Container = MEFLoader.Init();
             Console.WriteLine("Starting up services...");
             Console.WriteLine("");
 
@@ -24,14 +37,50 @@ namespace CarRental.ServiceHost
             StartService(hostRentalManager, "RentalManager");
             StartService(hostAccountManager, "AccountManager");
 
+            Timer timer = new Timer(5000);
+            timer.Elapsed += Timer_Elapsed;
+            timer.Start();
+            Console.WriteLine("Reservation monitor started");
+
             Console.WriteLine("");
             Console.WriteLine("Press [Enter] to exit");
             Console.ReadLine();
+
+            timer.Stop();
+            Console.WriteLine("Reservation monitor stopped");
 
             StopService(hostInventoryManager, "InventoryManager");
             StopService(hostRentalManager, "RentalManager");
             StopService(hostAccountManager, "AccountManager");
 
+
+        }
+
+        private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Console.WriteLine("Looking for dead reservations at {0}", DateTime.Now.ToString());
+            RentalManager rentalManager = new RentalManager();
+
+            Reservation[] reservations = rentalManager.GetDeadReservations();
+            if (reservations != null)
+            {
+                foreach (var reservation in reservations)
+                {
+                    using (TransactionScope scope = new TransactionScope())
+                    {
+                        try
+                        {
+                            rentalManager.CancelReservation(reservation.ReservationId);
+                            Console.WriteLine("Canceling reservation '{0}'.", reservation.ReservationId);
+                            scope.Complete();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("There was an exception when attempting to cancel reservation '{0}'", reservation.ReservationId);
+                        }
+                    }
+                }
+            }
         }
 
         static void StartService(SM.ServiceHost host, string serviceDescription)
@@ -41,9 +90,9 @@ namespace CarRental.ServiceHost
             foreach (var endpoint in host.Description.Endpoints)
             {
                 Console.WriteLine(string.Format("Listening on endpoint:"));
-                Console.WriteLine(string.Format("Address: {0}", endpoint.Address.Uri));
-                Console.WriteLine(string.Format("Binding: {0}", endpoint.Binding.Name));
-                Console.WriteLine(string.Format("Contract: {0}", endpoint.Contract.Name));
+                Console.WriteLine($"Address: {endpoint.Address.Uri}");
+                Console.WriteLine($"Binding: {endpoint.Binding.Name}");
+                Console.WriteLine($"Contract: {endpoint.Contract.Name}");
             }
             Console.WriteLine();
         }
@@ -51,7 +100,7 @@ namespace CarRental.ServiceHost
         static void StopService(SM.ServiceHost host, string serviceDescription)
         {
             host.Close();
-            Console.WriteLine("Service {0} stopped",serviceDescription);
+            Console.WriteLine("Service {0} stopped", serviceDescription);
         }
     }
 }
