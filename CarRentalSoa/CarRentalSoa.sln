@@ -57,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.ServiceHost.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService1", "WindowsService1\WindowsService1.csproj", "{F20697DD-2B29-413F-8AC1-1323CAD0C7AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Client.Contracts", "CarRental.Client.Contracts\CarRental.Client.Contracts.csproj", "{FC2F6A7E-CB35-432B-9881-DD4C7B65A435}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,10 @@ Global
 		{F20697DD-2B29-413F-8AC1-1323CAD0C7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F20697DD-2B29-413F-8AC1-1323CAD0C7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F20697DD-2B29-413F-8AC1-1323CAD0C7AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC2F6A7E-CB35-432B-9881-DD4C7B65A435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC2F6A7E-CB35-432B-9881-DD4C7B65A435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC2F6A7E-CB35-432B-9881-DD4C7B65A435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC2F6A7E-CB35-432B-9881-DD4C7B65A435}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -168,6 +174,7 @@ Global
 		{F2EA2BE0-6B84-4735-B864-1FFA664919A3} = {037C365B-788D-4A05-9513-05A6F3E4029D}
 		{F9D18918-AD8E-47AC-B56A-38F28984E6E3} = {C35D60BA-BD81-4289-BACC-213AF1C84BC1}
 		{F20697DD-2B29-413F-8AC1-1323CAD0C7AF} = {037C365B-788D-4A05-9513-05A6F3E4029D}
+		{FC2F6A7E-CB35-432B-9881-DD4C7B65A435} = {A8DD9CBC-763D-4021-8812-D87AACDC3A7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B7C420A-FF0D-4C81-A622-6150F32D8CF7}
