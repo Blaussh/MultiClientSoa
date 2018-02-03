@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ManagerBase.cs" />
+    <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\InventoryManager.cs" />
+    <Compile Include="Managers\RentalManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +61,10 @@
     <ProjectReference Include="..\CarRental.Business.Entities\CarRental.Business.Entities.csproj">
       <Project>{1EA5AC22-3799-403E-B24C-2D2B0FB07115}</Project>
       <Name>CarRental.Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Common\CarRental.Common.csproj">
+      <Project>{342DB06A-A526-47A0-BBE1-5CF579F053DA}</Project>
+      <Name>CarRental.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarRental.Data.Contracts\CarRental.Data.Contracts.csproj">
       <Project>{F3E89069-D9F8-4E84-85BB-AB4FE38802A0}</Project>

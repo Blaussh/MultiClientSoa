@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using System.Xml.Serialization;
 using CarRental.Business.Common;
 using CarRental.Business.Contracts;
 using CarRental.Business.Entities;
+using CarRental.Common;
 using CarRental.Data.Contracts;
 using Core.Common.Contracts;
 using Core.Common.Core;
@@ -30,11 +32,25 @@ namespace CarRental.Business.Managers
             _dataRepositoryFactory = dataRepositoryFactory;
         }
 
+        public InventoryManager(IBusinessEngineFactory businessEngineFactory)
+        {
+            _businessEngineFactory = businessEngineFactory;
+        }
+
+        public InventoryManager(IDataRepositoryFactory dataRepositoryFactory, IBusinessEngineFactory businessEngineFactory)
+        {
+            _dataRepositoryFactory = dataRepositoryFactory;
+            _businessEngineFactory = businessEngineFactory;
+        }
+
         [Import]
         private IDataRepositoryFactory _dataRepositoryFactory;
 
-        [Import] private ICarRentalEngine _iCarRentalEngine;
+        [Import]
+        private IBusinessEngineFactory _businessEngineFactory;
 
+        [PrincipalPermission(SecurityAction.Demand, Role=Security.CarRentalAdminRole) ]
+        [PrincipalPermission(SecurityAction.Demand, Name=Security.CarRentalUser) ]
         public Car GetCar(int carId)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -56,6 +72,8 @@ namespace CarRental.Business.Managers
 
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.CarRentalUser)]
         public Car[] GetAllCars() //Also update the returned array if each car rented or not
         {
             return ExecuteFaultHandledOperation(() =>
@@ -77,6 +95,7 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public Car UpdateCar(Car car)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -94,6 +113,7 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public void DeleteCar(int carId)
         {
             ExecuteFaultHandledOperation(() =>
@@ -103,6 +123,8 @@ namespace CarRental.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.CarRentalUser)]
         public Car[] GetAvailableCars(DateTime pickupDate, DateTime returnDate)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -110,6 +132,8 @@ namespace CarRental.Business.Managers
                 ICarRepository carRepository = _dataRepositoryFactory.GetDataRepository<ICarRepository>();
                 IRentalRepository rentalRepository = _dataRepositoryFactory.GetDataRepository<IRentalRepository>();
                 IReservationRepository reservationRepository = _dataRepositoryFactory.GetDataRepository<IReservationRepository>();
+
+                ICarRentalEngine carRentalEngine = _businessEngineFactory.GetBusinessEngine<ICarRentalEngine>();
 
                 IEnumerable<Car> cars = carRepository.Get();
                 IEnumerable<Rental> rentedCars = rentalRepository.GetCurrentlyRentedCars();
@@ -119,7 +143,7 @@ namespace CarRental.Business.Managers
 
                 foreach (Car car in cars)
                 {
-                    if(1==1) // carId, pickupDate, returnDate, rentedCars, reservedCars
+                    if(carRentalEngine.IsCarAvailableForRental(car.CarId,pickupDate,returnDate,rentedCars,reservedCars)); // carId, pickupDate, returnDate, rentedCars, reservedCars
                         availableCars.Add(car);
                 }
 
