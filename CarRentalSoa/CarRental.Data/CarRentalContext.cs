@@ -29,26 +29,17 @@ namespace CarRental.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            try
-            {
-                modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-                modelBuilder.Ignore<PropertyChangedEventHandler>();
-                modelBuilder.Ignore<ExtensionDataObject>();
-                modelBuilder.Ignore<IIdentifiableEntity>();
+            modelBuilder.Ignore<PropertyChangedEventHandler>();
+            modelBuilder.Ignore<ExtensionDataObject>();
+            modelBuilder.Ignore<IIdentifiableEntity>();
 
-                modelBuilder.Entity<Account>().HasKey<int>(e => e.AccountId).Ignore(e => e.EntityId);
-                modelBuilder.Entity<Car>().HasKey<int>(e => e.CarId).Ignore(e => e.EntityId);
-                modelBuilder.Entity<Rental>().HasKey<int>(e => e.RentalId).Ignore(e => e.EntityId);
-                modelBuilder.Entity<Reservation>().HasKey<int>(e => e.ReservationId).Ignore(e => e.EntityId);
-                modelBuilder.Entity<Car>().Ignore(e => e.CurrentlyRented);
-
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+            modelBuilder.Entity<Account>().HasKey<int>(e => e.AccountId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<Car>().HasKey<int>(e => e.CarId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<Rental>().HasKey<int>(e => e.RentalId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<Reservation>().HasKey<int>(e => e.ReservationId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<Car>().Ignore(e => e.CurrentlyRented);
         }
     }
 }

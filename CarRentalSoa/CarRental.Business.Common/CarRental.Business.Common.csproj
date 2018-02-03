@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D60D6488-9AEF-4A0A-AB33-50E15CF740A1}</ProjectGuid>
+    <ProjectGuid>{19EB4503-C54E-4BF4-890F-19D97A729324}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarRental.Business.Bootstrapper</RootNamespace>
-    <AssemblyName>CarRental.Business.Bootstrapper</AssemblyName>
+    <RootNamespace>CarRental.Business.Common</RootNamespace>
+    <AssemblyName>CarRental.Business.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,15 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,22 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MEFLoader.cs" />
+    <Compile Include="ICarRentalEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarRental.Business\CarRental.Business.csproj">
-      <Project>{5C6C0179-137D-485B-A7CC-5029E5746D8B}</Project>
-      <Name>CarRental.Business</Name>
+    <ProjectReference Include="..\CarRental.Business.Entities\CarRental.Business.Entities.csproj">
+      <Project>{1EA5AC22-3799-403E-B24C-2D2B0FB07115}</Project>
+      <Name>CarRental.Business.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarRental.Data\CarRental.Data.csproj">
-      <Project>{A3C4F9FE-485C-40EA-ABEF-56DB24D2F45E}</Project>
-      <Name>CarRental.Data</Name>
+    <ProjectReference Include="..\Core.Common.Contracts\Core.Common.Contracts.csproj">
+      <Project>{8259B726-BF63-4C95-A0F3-BF0671E3553B}</Project>
+      <Name>Core.Common.Contracts</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
